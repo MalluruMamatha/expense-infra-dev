@@ -46,7 +46,7 @@ pipeline{
             steps{
 
                 sh """
-                ls -ltr
+                ls -lr
                 """
 
             }
