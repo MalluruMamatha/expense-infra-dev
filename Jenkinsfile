@@ -45,7 +45,9 @@ pipeline{
         stage('init'){
             steps{
 
-                sh 'echo This is from init'
+                sh """
+                ls -ltr
+                """
 
             }
         }
