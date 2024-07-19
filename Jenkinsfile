@@ -46,7 +46,9 @@ pipeline{
             steps{
 
                 sh """
-                ls -l
+              cd 01-vpc
+              terraform init -reconfigure
+              
                 """
 
             }
