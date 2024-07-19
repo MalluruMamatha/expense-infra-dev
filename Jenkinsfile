@@ -76,6 +76,7 @@ pipeline{
 
         always{
             echo 'always say hello' 
+            deleteDir()
         }
         success{
             echo 'i will when pipeline is success'
