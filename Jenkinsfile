@@ -35,10 +35,10 @@ pipeline{
         Greetings = "Good Morning"  // environments are like variables....key value pairs
     }
 
-    parameters{
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-    }
+    // parameters{
+    //     text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+    //     booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+    // }
 
     stages{
 
@@ -46,6 +46,7 @@ pipeline{
             steps{
 
                 sh """
+              
               cd 01-vpc
               terraform init -reconfigure
               
