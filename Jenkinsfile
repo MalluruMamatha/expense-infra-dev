@@ -27,7 +27,7 @@ pipeline{
     }
     options{ /// using option we can specify the time that pipeline should execute 
     //(with in the time it get complets)
-        timeout(time: 3, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
        
     }
