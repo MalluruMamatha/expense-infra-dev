@@ -21,7 +21,9 @@ resource "aws_ssm_parameter" "db_subnet_group_name" {
   name  = "/${var.project_name}/${var.environment}/db_subnet_group_name"
   type  = "String"
   value = module.vpc_test.database_subnet_group_name
+
 }
+
 
 resource "aws_ssm_parameter" "igw_id" {
   name  = "/${var.project_name}/${var.environment}/igw_id"
