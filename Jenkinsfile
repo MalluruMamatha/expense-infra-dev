@@ -29,6 +29,7 @@ pipeline{
     //(with in the time it get complets)
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
+        ansiColor('xterm')
        
     }
     environment{
@@ -76,7 +77,7 @@ pipeline{
 
         always{
             echo 'always say hello' 
-            deleteDir()
+            deleteDir()  ////delete workspace when build is done
         }
         success{
             echo 'i will when pipeline is success'
