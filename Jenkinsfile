@@ -9,6 +9,11 @@ pipeline{
         ansiColor('xterm')
        
     }
+
+    parameters {
+        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+    }
+
     environment{
         Greetings = "Good Morning"  // environments are like variables....key value pairs
     }
@@ -34,9 +39,45 @@ pipeline{
             }
             }
             stage('apply'){
-                steps{
 
-                sh 'echo This is from apply'
+                when {
+                expression{
+                    params.action == 'Apply'
+                }
+            }
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+            }
+
+                steps{
+                    
+
+               sh """
+                    cd 01-vpc
+                    terraform apply -auto-approve
+                """
+                }
+
+            }
+            stage('destroy'){
+                when{
+                    expression{
+                        params.action == "Destroy"
+
+                    }
+                }
+
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+            }
+
+                steps{
+                    sh """
+                        cd 01-vpc
+                        terraform destroy -auto-approve
+                    """
                 }
 
             }
@@ -51,11 +92,11 @@ pipeline{
             deleteDir()  ////delete workspace when build is done
         }
         success{
-            echo 'i will when pipeline is success'
+            echo 'i will run when pipeline is success'
 
         }
         failure{
-            echo 'i will ren when pipeline is failure'
+            echo 'i will run when pipeline is failure'
 
         }
     }
