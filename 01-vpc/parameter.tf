@@ -17,10 +17,10 @@ resource "aws_ssm_parameter" "private_subnet_ids" {
   value = join("," ,module.vpc_test.private_subnet_ids) # converting list to string list
 }
 
-resource "aws_ssm_parameter" "database_subnet_group_name" {
-  name  = "/${var.project_name}/${var.environment}/database_subnet_group_name"
+resource "aws_ssm_parameter" "db_subnet_group_name" {
+  name  = "/${var.project_name}/${var.environment}/db_subnet_group_name"
   type  = "String"
-  value = module.vpc_test.database_subnet_group_name
+  value = module.vpc_test.db_subnet_group_name
 }
 
 resource "aws_ssm_parameter" "igw_id" {
