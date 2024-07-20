@@ -26,7 +26,10 @@ pipeline{
             stage('plan'){
                 steps{
 
-                sh 'echo This is from plan'
+                sh """
+                    cd 01-vpc
+                    terraform plan
+                """
 
             }
             }
