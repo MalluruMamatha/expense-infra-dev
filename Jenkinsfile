@@ -1,26 +1,3 @@
-// pipeline {
-//     agent any
-//     options {
-//         // Timeout counter starts AFTER agent is allocated
-//         timeout(time: 1, unit: 'SECONDS')
-
-//     }
-//     stages {
-//         stage('Example') {
-//             steps {
-//                 echo 'Hello World'
-//             }
-//         }
-//     }
-
-//     post { 
-//         always { 
-//             echo 'I will always say Hello again!'
-//         }
-// }
-// }
-
-
 pipeline{
     agent {
         label 'AGENT-1'
@@ -35,11 +12,6 @@ pipeline{
     environment{
         Greetings = "Good Morning"  // environments are like variables....key value pairs
     }
-
-    // parameters{
-    //     text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-    //     booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-    // }
 
     stages{
         stage('init'){
